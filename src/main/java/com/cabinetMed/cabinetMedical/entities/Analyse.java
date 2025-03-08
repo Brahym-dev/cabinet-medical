@@ -16,7 +16,7 @@ public class Analyse {
     private Long id;
     private String designation;
     private String abrege;
-
+//comment
     @OneToMany(mappedBy = "analyse" ,fetch = FetchType.LAZY)
     private List<LigneBilan> ligneBilans;
 
