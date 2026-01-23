@@ -26,37 +26,37 @@ public class BilanDto {
     private List<LigneBilanDto> ligneBilanDtos;
 
     public static BilanDto EntityToDto(Bilan bilan){
-        if (bilan==null) return null;
-        BilanDto bilanDto= new BilanDto();
-         bilanDto.setId(bilan.getId());
-         bilanDto.setDateBilan(bilan.getDateBilan());
-         if (bilan.getPatient()!=null){
-             bilanDto.setPatientDto(PatientDto.fromEntity(bilan.getPatient()));
-         }
-         if (bilan.getLigneBilans()!=null){
-             bilanDto.setLigneBilanDtos(bilan.getLigneBilans()
-                     .stream()
-                     .map(LigneBilanDto::fromEntity)
-                     .collect(Collectors.toList()));
-         }
+//        if (bilan==null) return null;
+//        BilanDto bilanDto= new BilanDto();
+//         bilanDto.setId(bilan.getId());
+//         bilanDto.setDateBilan(bilan.getDateBilan());
+//         if (bilan.getPatient()!=null){
+//             bilanDto.setPatientDto(PatientDto.fromEntity(bilan.getPatient()));
+//         }
+//         if (bilan.getLigneBilans()!=null){
+//             bilanDto.setLigneBilanDtos(bilan.getLigneBilans()
+//                     .stream()
+//                     .map(LigneBilanDto::fromEntity)
+//                     .collect(Collectors.toList()));
+//         }
 
-        return bilanDto;
+        return null;
     }
 
     public static Bilan entityToDto( BilanDto dto) {
-        if (dto == null) return null;
-        Bilan bilan = new Bilan();
-        bilan.setId(bilan.getId());
-        bilan.setDateBilan(bilan.getDateBilan());
-        if (dto.getPatientDto() != null) {
-            bilan.setPatient(PatientDto.toEntity(dto.getPatientDto()));
-        }
-        if (dto.getLigneBilanDtos() != null) {
-            bilan.setLigneBilans(dto.getLigneBilanDtos()
-                    .stream()
-                    .map(LigneBilanDto::toEntity)
-                    .collect(Collectors.toList()));
-        }
-        return bilan;
+//        if (dto == null) return null;
+//        Bilan bilan = new Bilan();
+//        bilan.setId(bilan.getId());
+//        bilan.setDateBilan(bilan.getDateBilan());
+//        if (dto.getPatientDto() != null) {
+//            bilan.setPatient(PatientDto.toEntity(dto.getPatientDto()));
+//        }
+//        if (dto.getLigneBilanDtos() != null) {
+//            bilan.setLigneBilans(dto.getLigneBilanDtos()
+//                    .stream()
+//                    .map(LigneBilanDto::toEntity)
+//                    .collect(Collectors.toList()));
+//        }
+        return null;
     }
 }

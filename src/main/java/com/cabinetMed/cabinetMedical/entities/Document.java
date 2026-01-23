@@ -15,7 +15,6 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String entete;
     private String corps;
     private String pied;
@@ -25,7 +24,8 @@ public class Document {
     @ManyToOne
     private Patient patient;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "typeDocument_id", nullable = false)
     private TypeDocument typeDocument;
 
 

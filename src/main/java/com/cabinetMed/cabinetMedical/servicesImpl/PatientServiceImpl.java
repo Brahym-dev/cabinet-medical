@@ -16,8 +16,8 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient savePatient(PatientDto patientDto) {
-        Patient patient=PatientDto.toEntity(patientDto);
-        return patientRepository.save(patient);
+        //Patient patient=PatientDto.toEntity(patientDto);
+        return null;//patientRepository.save(patient);
     }
 
     @Override

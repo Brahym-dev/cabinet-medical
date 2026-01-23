@@ -17,5 +17,4 @@ public class AntecedentsPatient {
         private Long id;
         private String typeAntecedent;
         private String designation;
-
 }

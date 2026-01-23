@@ -15,9 +15,11 @@ public class TypeDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String designation;
 
 
-    @OneToMany(mappedBy = "typeDocument" ,fetch = FetchType.LAZY)
-    private List<Document> documents;
+//    @OneToMany(mappedBy = "typeDocument" ,fetch = FetchType.LAZY)
+//    private List<Document> documents;
 }
