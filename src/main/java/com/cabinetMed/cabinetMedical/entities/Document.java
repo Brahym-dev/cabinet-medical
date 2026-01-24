@@ -27,7 +27,5 @@ public class Document {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "typeDocument_id", nullable = false)
     private TypeDocument typeDocument;
-
-
 }
 

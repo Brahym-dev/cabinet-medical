@@ -41,18 +41,18 @@ public class GlobalExceptionHandler {
     }
 
     /* Erreur JSON / type / date */
-//    @ExceptionHandler(HttpMessageNotReadableException.class)
-//    public ResponseEntity<GlobalResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,HttpServletRequest request) {
-//        String message = "Format de données invalide (date ou type incorrect)";
-//
-//        if (ex.getCause() instanceof InvalidFormatException) {
-//            message = "Format invalide pour le champ : "
-//                    + ((InvalidFormatException) ex.getCause())
-//                    .getPath().get(0).getFieldName();
-//        }
-//        var errors = List.of(new GlobalResponse.ErrorItem(message));
-//        return new ResponseEntity<>(new GlobalResponse<>(errors),HttpStatus.BAD_REQUEST);
-//    }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<GlobalResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,HttpServletRequest request) {
+        String message = "Format de données invalide (date ou type incorrect)";
+
+        if (ex.getCause() instanceof InvalidFormatException) {
+            message = "Format invalide pour le champ : "
+                    + ((InvalidFormatException) ex.getCause())
+                    .getPath().get(0).getFieldName();
+        }
+        var errors = List.of(new GlobalResponse.ErrorItem(message));
+        return new ResponseEntity<>(new GlobalResponse<>(errors),HttpStatus.BAD_REQUEST);
+    }
 
     //exception personnalisée
     @ExceptionHandler(CustomResponseException.class)
