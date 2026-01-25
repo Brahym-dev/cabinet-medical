@@ -6,13 +6,11 @@ import com.cabinetMed.cabinetMedical.DTOs.DocumentUpdateDto;
 import com.cabinetMed.cabinetMedical.entities.Document;
 import com.cabinetMed.cabinetMedical.entities.TypeDocument;
 import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
-import com.cabinetMed.cabinetMedical.mapper.CabinetMapper;
 import com.cabinetMed.cabinetMedical.mapper.DocumentMapper;
 import com.cabinetMed.cabinetMedical.repositories.DocumentRepository;
 import com.cabinetMed.cabinetMedical.repositories.TypeDocumentRepository;
 import com.cabinetMed.cabinetMedical.services.DocumentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class DocumentServiceimpl  implements DocumentService {
+public class DocumentServiceImpl implements DocumentService {
 
 
     private final DocumentRepository documentRepository;
