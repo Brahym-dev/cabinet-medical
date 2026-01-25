@@ -34,6 +34,7 @@ public class AntecedentsPatientController {
 
     @GetMapping("/{antecedentId}")
     public ResponseEntity<GlobalResponse<AntecedentsPatient>> getAntecedentsPatient(@PathVariable Long antecedentId) {
+        System.out.println("hello test git");
         return new ResponseEntity<>(new
                 GlobalResponse<>(antecedentsPatientService.getAntecedentsPatientById(antecedentId)), HttpStatus.OK);
     }
