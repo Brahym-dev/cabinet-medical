@@ -9,7 +9,7 @@ import java.util.Date;
 
 public record DocumentCreateDto(
         //@NotNull(message = "obligatoire.")
-        @NotBlank
+        @NotBlank(message = "obligatoire.")
         String entete,
         //@NotNull(message = "obligatoire.")
         @NotBlank
