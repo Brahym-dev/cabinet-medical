@@ -1,5 +1,8 @@
 package com.cabinetMed.cabinetMedical.services;
 
+import com.cabinetMed.cabinetMedical.DTOs.MedicamentCreateDto;
+import com.cabinetMed.cabinetMedical.DTOs.MedicamentResponseDto;
+import com.cabinetMed.cabinetMedical.DTOs.MedicamentUpdateDto;
 import com.cabinetMed.cabinetMedical.entities.Medicament;
 import org.springframework.stereotype.Service;
 
@@ -7,10 +10,9 @@ import java.util.List;
 @Service
 public interface MedicamentService {
 
-    Medicament saveMedicament(Medicament medicament);
-    Medicament updateMedicament(Medicament medicament);
-    Medicament getMedicamentById(Long id);
-    void deleteMedicament(Long id);
-    List<Medicament> medicaments();
-
+    MedicamentResponseDto create(MedicamentCreateDto request);
+    MedicamentResponseDto update(Long id, MedicamentUpdateDto request);
+    MedicamentResponseDto getById(Long id);
+    List<MedicamentResponseDto> getAll();
+    void delete(Long id);
 }

@@ -43,7 +43,7 @@ public class DocumentController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new GlobalResponse<>(documentService.update(id , request)));
+                .body(new GlobalResponse<>(documentService.update(id, request)));
     }
 
     @DeleteMapping("/{id}")
