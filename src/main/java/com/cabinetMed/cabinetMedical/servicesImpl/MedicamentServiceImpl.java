@@ -2,6 +2,7 @@ package com.cabinetMed.cabinetMedical.servicesImpl;
 
 import com.cabinetMed.cabinetMedical.DTOs.MedicamentCreateDto;
 import com.cabinetMed.cabinetMedical.DTOs.MedicamentResponseDto;
+import com.cabinetMed.cabinetMedical.DTOs.MedicamentUpdateDto;
 import com.cabinetMed.cabinetMedical.entities.Document;
 import com.cabinetMed.cabinetMedical.entities.Medicament;
 import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
@@ -28,8 +29,11 @@ public class MedicamentServiceImpl implements MedicamentService {
     }
 
     @Override
-    public MedicamentResponseDto update(Medicament medicament) {
-        return null;
+    public MedicamentResponseDto update(Long id, MedicamentUpdateDto request) {
+        Medicament medicament = medicamentRepository.findById(id)
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("Medicament avec id : " + id + " est introuvable"));
+        MedicamentMapper.updateEntity(medicament, request);
+        return MedicamentMapper.toResponse(medicamentRepository.save(medicament));
     }
 
     @Override

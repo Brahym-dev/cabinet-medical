@@ -2,6 +2,7 @@ package com.cabinetMed.cabinetMedical.restControllers;
 
 import com.cabinetMed.cabinetMedical.DTOs.MedicamentCreateDto;
 import com.cabinetMed.cabinetMedical.DTOs.MedicamentResponseDto;
+import com.cabinetMed.cabinetMedical.DTOs.MedicamentUpdateDto;
 import com.cabinetMed.cabinetMedical.entities.Medicament;
 import com.cabinetMed.cabinetMedical.exception.GlobalResponse;
 import com.cabinetMed.cabinetMedical.services.MedicamentService;
@@ -42,11 +43,18 @@ public class MedicamentController {
                 .body(new GlobalResponse<>(medicamentService.getById(id)));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<GlobalResponse<MedicamentResponseDto>> update(@PathVariable Long id, @RequestBody MedicamentUpdateDto request){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new GlobalResponse<>(medicamentService.update(id,request)));
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         medicamentService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 
 }

@@ -62,15 +62,8 @@ public class DocumentServiceImpl implements DocumentService {
 
         TypeDocument typeDocument = typeDocumentRepository.findById(request.typeDocumentId())
                 .orElseThrow(()-> CustomResponseException.ResourceNotFound("Type Document avec id " + request.typeDocumentId() + "est introuvable"));
-        //Mise à jour des champs
-//        documentupdated.setEntete(request.entete());
-//        documentupdated.setCorps(request.corps());
-//        documentupdated.setPied(request.pied());
-//        documentupdated.setDateDocument(request.dateDocument());
-//        documentupdated.setObjetDocument(request.objetDocument());
-//        documentupdated.getTypeDocument().setId(request.getTypeDocument().getId());
-//        documentupdated.getTypeDocument().setDesignation(request.getTypeDocument().getDesignation());
 
+        //Mise à jour des champs
         DocumentMapper.updateEntity(document, request, typeDocument);
         return DocumentMapper.toResponse(documentRepository.save(document));
     }
