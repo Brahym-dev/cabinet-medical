@@ -1,13 +1,11 @@
 package com.cabinetMed.cabinetMedical.mapper;
 
 import com.cabinetMed.cabinetMedical.DTOs.*;
-import com.cabinetMed.cabinetMedical.entities.Document;
 import com.cabinetMed.cabinetMedical.entities.Medicament;
-import com.cabinetMed.cabinetMedical.entities.TypeDocument;
 
 public class MedicamentMapper {
     // Convert Entity to DTO
-    public static Medicament toEntity(MedicamentCreateDto request, Medicament medicament) {
+    public static Medicament toEntity(MedicamentCreateDto request) {
         return Medicament.builder()
                 .nomCommercial(request.nomCommercial())
                 .nomDCI(request.nomDCI())

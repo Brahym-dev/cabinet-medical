@@ -1,7 +1,5 @@
 package com.cabinetMed.cabinetMedical.DTOs;
 
-import jakarta.validation.constraints.NotNull;
-
 public record MedicamentResponseDto(
         Long id,
         String nomCommercial,
