@@ -24,7 +24,7 @@ public class Medicament {
     private String laboratoire;
     private double prix;
 
-    @OneToMany(mappedBy = "medicament")
-    private List<LigneOrdonnance> ligneOrdonnances;
+//    @OneToMany(mappedBy = "medicament")
+//    private List<LigneOrdonnance> ligneOrdonnances;
 
 }
