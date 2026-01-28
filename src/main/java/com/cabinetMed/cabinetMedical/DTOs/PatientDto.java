@@ -2,12 +2,10 @@ package com.cabinetMed.cabinetMedical.DTOs;
 
 
 
-import com.cabinetMed.cabinetMedical.entities.*;
 import lombok.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Builder
 @Getter
@@ -38,7 +36,7 @@ public class PatientDto {
 
     private List<ConsultationDto> consultationDtos;
 
-    private List<RendezVousDto> rendezVousDtos;
+    private List<RendezVousCreateDto> rendezVousDtos;
 
     private List<BilanDto> bilanDtos;
 
