@@ -12,7 +12,7 @@ public class RendezVousMapper {
                 .heureDebut(request.heureDebut())
                 .heureFin(request.heureFin())
                 .observation(request.observation())
-                .status(StatusRDV.PENDING)
+                .status(StatusRDV.PLANIFIE)
                 .build();
     }
 
