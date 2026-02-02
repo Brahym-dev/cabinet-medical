@@ -1,11 +1,9 @@
 package com.cabinetMed.cabinetMedical.DTOs;
 
-import com.cabinetMed.cabinetMedical.entities.Patient;
 import com.cabinetMed.cabinetMedical.entities.TypeCouvertureMedicale;
 import lombok.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -16,7 +14,7 @@ public class TypeCouvertureMedicaleDto {
     private Long id;
     private String designation;
     private String abrege;
-    private List<PatientDto> patientDtos;
+    private List<PatientResponseShortDto> patientDtos;
 
     // Conversion Entity to DTO
     public static TypeCouvertureMedicaleDto fromEntity(TypeCouvertureMedicale entity) {

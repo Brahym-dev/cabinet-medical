@@ -1,9 +1,8 @@
 package com.cabinetMed.cabinetMedical.restControllers;
 
-import com.cabinetMed.cabinetMedical.DTOs.PatientDto;
+import com.cabinetMed.cabinetMedical.DTOs.PatientResponseShortDto;
 import com.cabinetMed.cabinetMedical.entities.Patient;
 import com.cabinetMed.cabinetMedical.services.PatientService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +16,7 @@ public class PatientController {
     private final PatientService patientService;
 
     @PostMapping("patient")
-    public Patient savePatient(@RequestBody PatientDto patientDto) {
+    public Patient savePatient(@RequestBody PatientResponseShortDto patientDto) {
         return patientService.savePatient(patientDto);
     }
 

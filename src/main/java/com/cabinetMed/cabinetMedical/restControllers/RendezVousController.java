@@ -21,10 +21,16 @@ public class RendezVousController {
 
     @PostMapping("/{patient_id}")
     public ResponseEntity<GlobalResponse<RendezVousResponseDto>> create(@Valid @RequestBody RendezVousCreateDto request, @PathVariable Long patient_id){
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new GlobalResponse<>(rendezVousService.create(request,patient_id)));
+    }
+
+    @GetMapping
+    public ResponseEntity<GlobalResponse<List<RendezVousResponseDto>>> getAll(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new GlobalResponse<>(rendezVousService.getAll()));
     }
 
 }

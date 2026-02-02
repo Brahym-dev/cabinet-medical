@@ -25,6 +25,7 @@ public class RendezVous {
     private LocalTime heureFin;
     private String observation;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private StatusRDV status;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

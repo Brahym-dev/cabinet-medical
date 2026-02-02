@@ -1,6 +1,6 @@
 package com.cabinetMed.cabinetMedical.servicesImpl;
 
-import com.cabinetMed.cabinetMedical.DTOs.PatientDto;
+import com.cabinetMed.cabinetMedical.DTOs.PatientResponseShortDto;
 import com.cabinetMed.cabinetMedical.entities.Patient;
 import com.cabinetMed.cabinetMedical.repositories.PatientRepository;
 import com.cabinetMed.cabinetMedical.services.PatientService;
@@ -15,7 +15,7 @@ public class PatientServiceImpl implements PatientService {
     private  PatientRepository patientRepository;
 
     @Override
-    public Patient savePatient(PatientDto patientDto) {
+    public Patient savePatient(PatientResponseShortDto patientDto) {
         //Patient patient=PatientDto.toEntity(patientDto);
         return null;//patientRepository.save(patient);
     }

@@ -25,7 +25,9 @@ public class RendezVousMapper {
                 rdv.getHeureDebut(),
                 rdv.getHeureFin(),
                 rdv.getObservation(),
-                rdv.getStatus().toString()
+                rdv.getStatus().toString(),
+                PatientMapper.toResponseShort(rdv.getPatient())
+
         );
     }
 

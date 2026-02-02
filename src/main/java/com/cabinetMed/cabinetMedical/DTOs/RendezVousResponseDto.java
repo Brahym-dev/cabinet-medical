@@ -17,7 +17,8 @@ public record RendezVousResponseDto(
         LocalTime heureDebut,
         LocalTime heureFin,
         String observation,
-        String status
+        String status,
+        PatientResponseShortDto patient
 
 ){}
 

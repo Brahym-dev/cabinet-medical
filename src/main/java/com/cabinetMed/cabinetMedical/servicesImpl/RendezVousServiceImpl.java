@@ -28,7 +28,7 @@ public class RendezVousServiceImpl implements RendezVousService {
                 .orElseThrow(()-> CustomResponseException.ResourceNotFound("Patient avec id : " + id + " est introuvable"));
         RendezVous rendezVous = RendezVousMapper.toEntity(request);
         rendezVous.setPatient(patient);
-        //rendezVous.setStatus(StatusRDV.PENDING);
+        //rendezVous.setStatus(StatusRDV.PLANIFIE);
         return RendezVousMapper.toResponse(rendezVousRepository.save(rendezVous));
     }
 
@@ -44,7 +44,10 @@ public class RendezVousServiceImpl implements RendezVousService {
 
     @Override
     public List<RendezVousResponseDto> getAll() {
-        return List.of();
+        return rendezVousRepository.findAll()
+                .stream()
+                .map(RendezVousMapper::toResponse)
+                .toList();
     }
 
     @Override
