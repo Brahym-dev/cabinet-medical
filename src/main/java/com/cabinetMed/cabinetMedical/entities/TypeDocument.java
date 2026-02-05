@@ -3,8 +3,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

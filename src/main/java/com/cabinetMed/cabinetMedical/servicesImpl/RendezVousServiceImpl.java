@@ -1,35 +1,57 @@
 package com.cabinetMed.cabinetMedical.servicesImpl;
 
+import com.cabinetMed.cabinetMedical.DTOs.RendezVousCreateDto;
+import com.cabinetMed.cabinetMedical.DTOs.RendezVousResponseDto;
+import com.cabinetMed.cabinetMedical.entities.Patient;
 import com.cabinetMed.cabinetMedical.entities.RendezVous;
+import com.cabinetMed.cabinetMedical.enums.StatusRDV;
+import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
+import com.cabinetMed.cabinetMedical.mapper.RendezVousMapper;
+import com.cabinetMed.cabinetMedical.repositories.PatientRepository;
+import com.cabinetMed.cabinetMedical.repositories.RendezVousRepository;
 import com.cabinetMed.cabinetMedical.services.RendezVousService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class RendezVousServiceImpl implements RendezVousService {
 
+    private final RendezVousRepository rendezVousRepository;
+    private final PatientRepository patientRepository;
 
     @Override
-    public RendezVous saveRendezVous(RendezVous rendezVous) {
+    public RendezVousResponseDto create(RendezVousCreateDto request, Long id) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("Patient avec id : " + id + " est introuvable"));
+        RendezVous rendezVous = RendezVousMapper.toEntity(request);
+        rendezVous.setPatient(patient);
+        //rendezVous.setStatus(StatusRDV.PLANIFIE);
+        return RendezVousMapper.toResponse(rendezVousRepository.save(rendezVous));
+    }
+
+    @Override
+    public RendezVousResponseDto update(Long id, RendezVous rendezVous) {
         return null;
     }
 
     @Override
-    public RendezVous updateRendezVous(RendezVous rendezVous) {
+    public RendezVousResponseDto getById(Long id) {
         return null;
     }
 
     @Override
-    public RendezVous getRendezVousById(Long id) {
-        return null;
+    public List<RendezVousResponseDto> getAll() {
+        return rendezVousRepository.findAll()
+                .stream()
+                .map(RendezVousMapper::toResponse)
+                .toList();
     }
 
     @Override
-    public void deleteRendezVous(Long id) {
+    public void delete(Long id) {
 
-    }
-
-    @Override
-    public List<RendezVous> rendezVouss() {
-        return List.of();
     }
 }
