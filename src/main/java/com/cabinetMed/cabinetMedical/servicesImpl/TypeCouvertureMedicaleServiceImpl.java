@@ -1,36 +1,52 @@
 package com.cabinetMed.cabinetMedical.servicesImpl;
 
+import com.cabinetMed.cabinetMedical.DTOs.TypeCouvertureMedicaleCreateDto;
 import com.cabinetMed.cabinetMedical.entities.TypeCouvertureMedicale;
+import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
+import com.cabinetMed.cabinetMedical.mapper.TypeCouvertureMedicaleMapper;
+import com.cabinetMed.cabinetMedical.repositories.TypeCouvertureMedicaleRepository;
 import com.cabinetMed.cabinetMedical.services.TypeCouvertureMedicaleService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-public class TypeCouvertureMedicaleServiceImpl implements TypeCouvertureMedicaleService
-{
+@Service
+@RequiredArgsConstructor
+public class TypeCouvertureMedicaleServiceImpl implements TypeCouvertureMedicaleService{
 
-
+    private final TypeCouvertureMedicaleRepository typeCouvertureMedicaleRepository;
     @Override
-    public TypeCouvertureMedicale saveTypeCouvertureMedicale(TypeCouvertureMedicale typeCouvertureMedicale) {
-        return null;
+    public TypeCouvertureMedicale create(TypeCouvertureMedicaleCreateDto request) {
+        return typeCouvertureMedicaleRepository.save(TypeCouvertureMedicaleMapper.toEntity(request));
     }
 
     @Override
-    public TypeCouvertureMedicale updateTypeCouvertureMedicale(TypeCouvertureMedicale typeCouvertureMedicale) {
-        return null;
+    public TypeCouvertureMedicale update(Long id, TypeCouvertureMedicale request) {
+        TypeCouvertureMedicale typeCouvertureMedicale = typeCouvertureMedicaleRepository.findById(id)
+                .orElseThrow(() -> CustomResponseException.ResourceNotFound(
+                        String.format("TypeCouvertureMedicale avec id " + id + " est introuvable .")));
+        typeCouvertureMedicale.setDesignation(request.getDesignation());
+        typeCouvertureMedicale.setDesignation(request.getAbrege());
+        return typeCouvertureMedicale;
     }
 
     @Override
-    public TypeCouvertureMedicale getTypeCouvertureMedicaleById(Long id) {
-        return null;
+    public TypeCouvertureMedicale getById(Long id) {
+        return typeCouvertureMedicaleRepository.findById(id)
+                .orElseThrow(() -> CustomResponseException.ResourceNotFound(
+                        String.format("TypeCouvertureMedicale avec id " + id + " est introuvable .")));
     }
 
     @Override
-    public void deleteTypeCouvertureMedicale(Long id) {
-
+    public List<TypeCouvertureMedicale> getAll() {
+         return typeCouvertureMedicaleRepository.findAll();
     }
 
     @Override
-    public List<TypeCouvertureMedicale> typeCouvertureMedicales() {
-        return List.of();
+    public void delete(Long id) {
+        Optional<TypeCouvertureMedicale> typeCouvertureMedicale = typeCouvertureMedicaleRepository.findById(id);
+        typeCouvertureMedicale.ifPresent(value->typeCouvertureMedicaleRepository.deleteById(value.getId()));
     }
 }
