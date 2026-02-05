@@ -1,16 +1,10 @@
 package com.cabinetMed.cabinetMedical.DTOs;
 
 import com.cabinetMed.cabinetMedical.entities.Bilan;
-import com.cabinetMed.cabinetMedical.entities.LigneBilan;
-import com.cabinetMed.cabinetMedical.entities.Patient;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +16,7 @@ public class BilanDto {
     private Date dateBilan;
     private String observation;
 
-    private PatientDto patientDto;
+    private PatientResponseShortDto patientDto;
     private List<LigneBilanDto> ligneBilanDtos;
 
     public static BilanDto EntityToDto(Bilan bilan){

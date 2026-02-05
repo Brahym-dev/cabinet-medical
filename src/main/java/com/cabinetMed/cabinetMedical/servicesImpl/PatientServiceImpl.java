@@ -1,42 +1,55 @@
 package com.cabinetMed.cabinetMedical.servicesImpl;
 
-import com.cabinetMed.cabinetMedical.DTOs.PatientDto;
+import com.cabinetMed.cabinetMedical.DTOs.PatientCreateDto;
+import com.cabinetMed.cabinetMedical.DTOs.PatientResponseShortDto;
 import com.cabinetMed.cabinetMedical.entities.Patient;
+import com.cabinetMed.cabinetMedical.entities.TypeCouvertureMedicale;
+import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
+import com.cabinetMed.cabinetMedical.mapper.PatientMapper;
 import com.cabinetMed.cabinetMedical.repositories.PatientRepository;
+import com.cabinetMed.cabinetMedical.repositories.TypeCouvertureMedicaleRepository;
 import com.cabinetMed.cabinetMedical.services.PatientService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
-    @Autowired
-    private  PatientRepository patientRepository;
+
+    private final PatientRepository patientRepository;
+    private final TypeCouvertureMedicaleRepository typeCouvertureMedicaleRepository;
 
     @Override
-    public Patient savePatient(PatientDto patientDto) {
-        //Patient patient=PatientDto.toEntity(patientDto);
-        return null;//patientRepository.save(patient);
+    public PatientResponseShortDto create(PatientCreateDto request) {
+        System.out.println(request.typeCouvertureMedicaleId());
+        TypeCouvertureMedicale typeCouvertureMedicale = typeCouvertureMedicaleRepository.findById(request.typeCouvertureMedicaleId())
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("TypeCouvertureMedicale avec id : " + request.typeCouvertureMedicaleId() + " est introuvable"));
+        Patient patient = PatientMapper.toEntity(request,typeCouvertureMedicale);
+        return PatientMapper.toResponseShort(patientRepository.save(patient));
     }
 
     @Override
-    public Patient updatePatient(Patient patient) {
-        return null;
+    public PatientResponseShortDto update(Long id, Patient request) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("Patient avec id : " + id + " est introuvable"));
+        return PatientMapper.toResponseShort(patientRepository.save(patient));
     }
 
     @Override
-    public Patient getPatientById(Long id) {
-        return null;
+    public Patient getById(Long id) {
+        return patientRepository.findById(id)
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("Patient avec id : " + id + " est introuvable"));
     }
 
     @Override
-    public void deletePatient(Long id) {
+    public void delete(Long id) {
 
     }
 
     @Override
-    public List<Patient> patients() {
+    public List<PatientResponseShortDto> patients() {
         return List.of();
     }
 }

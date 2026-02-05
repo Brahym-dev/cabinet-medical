@@ -11,10 +11,10 @@ public record DocumentCreateDto(
         //@NotNull(message = "obligatoire.")
         @NotBlank(message = "obligatoire.")
         String entete,
-        //@NotNull(message = "obligatoire.")
-        @NotBlank
+        @NotBlank(message = "obligatoire.")
+        @NotBlank(message = "obligatoire.")
         String corps,
-        //@NotNull(message = "obligatoire.")
+        @NotBlank(message = "obligatoire.")
         @NotBlank
         String pied,
 

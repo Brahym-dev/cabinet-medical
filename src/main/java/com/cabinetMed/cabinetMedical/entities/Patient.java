@@ -3,6 +3,7 @@ package com.cabinetMed.cabinetMedical.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 @Builder
@@ -35,10 +36,13 @@ public class Patient {
     private String antecedentAutres;
 
     @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<Consultation> consultations;
+    private Collection<RendezVous> rendezVous;
 
     @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<RendezVous> rendezVous;
+    private Collection<Document> documents;
+
+    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
+    private List<Consultation> consultations;
 
     @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
     private List<Bilan> bilans;
@@ -50,6 +54,5 @@ public class Patient {
     @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
     private List<Radiologie> radiologies;
 
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<Document> documents;
+
 }
