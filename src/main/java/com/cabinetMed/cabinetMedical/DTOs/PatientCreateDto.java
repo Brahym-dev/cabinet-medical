@@ -31,6 +31,7 @@ public record PatientCreateDto (
     String antecedentFamiliaux,
     String antecedentsChurirgicaux,
     String antecedentsMedicaux,
-    String antecedentAutres
+    String antecedentAutres,
+    Long typeCouvertureMedicaleId
 
 ){}

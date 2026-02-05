@@ -3,9 +3,10 @@ package com.cabinetMed.cabinetMedical.mapper;
 import com.cabinetMed.cabinetMedical.DTOs.PatientCreateDto;
 import com.cabinetMed.cabinetMedical.DTOs.PatientResponseShortDto;
 import com.cabinetMed.cabinetMedical.entities.Patient;
+import com.cabinetMed.cabinetMedical.entities.TypeCouvertureMedicale;
 
 public class PatientMapper {
-    public static Patient toEntity(PatientCreateDto request){
+    public static Patient toEntity(PatientCreateDto request, TypeCouvertureMedicale typeCouvertureMedicale){
         return Patient.builder()
                 .nom(request.nom())
                 .prenom(request.prenom())
@@ -25,6 +26,7 @@ public class PatientMapper {
                 .antecedentsChurirgicaux(request.antecedentsChurirgicaux())
                 .antecedentsMedicaux(request.antecedentsMedicaux())
                 .antecedentAutres(request.antecedentAutres())
+                .typeCouvertureMedicale(typeCouvertureMedicale)
                 .build();
     }
 

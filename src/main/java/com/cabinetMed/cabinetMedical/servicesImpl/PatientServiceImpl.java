@@ -3,9 +3,11 @@ package com.cabinetMed.cabinetMedical.servicesImpl;
 import com.cabinetMed.cabinetMedical.DTOs.PatientCreateDto;
 import com.cabinetMed.cabinetMedical.DTOs.PatientResponseShortDto;
 import com.cabinetMed.cabinetMedical.entities.Patient;
+import com.cabinetMed.cabinetMedical.entities.TypeCouvertureMedicale;
 import com.cabinetMed.cabinetMedical.exception.CustomResponseException;
 import com.cabinetMed.cabinetMedical.mapper.PatientMapper;
 import com.cabinetMed.cabinetMedical.repositories.PatientRepository;
+import com.cabinetMed.cabinetMedical.repositories.TypeCouvertureMedicaleRepository;
 import com.cabinetMed.cabinetMedical.services.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,11 +18,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
 
-    private  PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+    private final TypeCouvertureMedicaleRepository typeCouvertureMedicaleRepository;
 
     @Override
     public PatientResponseShortDto create(PatientCreateDto request) {
-        Patient patient = PatientMapper.toEntity(request);
+        System.out.println(request.typeCouvertureMedicaleId());
+        TypeCouvertureMedicale typeCouvertureMedicale = typeCouvertureMedicaleRepository.findById(request.typeCouvertureMedicaleId())
+                .orElseThrow(()-> CustomResponseException.ResourceNotFound("TypeCouvertureMedicale avec id : " + request.typeCouvertureMedicaleId() + " est introuvable"));
+        Patient patient = PatientMapper.toEntity(request,typeCouvertureMedicale);
         return PatientMapper.toResponseShort(patientRepository.save(patient));
     }
 
