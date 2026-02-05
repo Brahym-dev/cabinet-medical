@@ -43,7 +43,7 @@ public class TypeCouvertureMedicaleServiceImpl implements TypeCouvertureMedicale
     public List<TypeCouvertureMedicale> getAll() {
          return typeCouvertureMedicaleRepository.findAll();
     }
-
+//commentaire test git
     @Override
     public void delete(Long id) {
         Optional<TypeCouvertureMedicale> typeCouvertureMedicale = typeCouvertureMedicaleRepository.findById(id);
