@@ -28,8 +28,8 @@ public class TypeCouvertureMedicaleServiceImpl implements TypeCouvertureMedicale
                 .orElseThrow(() -> CustomResponseException.ResourceNotFound(
                         String.format("TypeCouvertureMedicale avec id " + id + " est introuvable .")));
         typeCouvertureMedicale.setDesignation(request.getDesignation());
-        typeCouvertureMedicale.setDesignation(request.getAbrege());
-        return typeCouvertureMedicale;
+        typeCouvertureMedicale.setAbrege(request.getAbrege());
+        return typeCouvertureMedicaleRepository.save(typeCouvertureMedicale);
     }
 
     @Override
