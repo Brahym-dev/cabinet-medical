@@ -8,7 +8,7 @@ public class CabinetMedicalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CabinetMedicalApplication.class, args);
-		System.out.println("hello world");
+		System.out.println("salam");
 	}
 
 }

@@ -35,24 +35,8 @@ public class Patient {
     private String antecedentsMedicaux;
     private String antecedentAutres;
 
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private Collection<RendezVous> rendezVous;
-
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private Collection<Document> documents;
-
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<Consultation> consultations;
-
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<Bilan> bilans;
-
     @ManyToOne
     private  TypeCouvertureMedicale typeCouvertureMedicale;
-
-
-    @OneToMany(mappedBy = "patient" ,fetch = FetchType.LAZY)
-    private List<Radiologie> radiologies;
 
 
 }

@@ -12,8 +12,9 @@ public interface PatientService {
 
     PatientResponseShortDto create(PatientCreateDto request);
     PatientResponseShortDto update(Long id,Patient patient);
-    Patient getById(Long id);
+    PatientResponseShortDto getById(Long id);
+    List<PatientResponseShortDto> getAll();
     void delete(Long id);
-    List<PatientResponseShortDto> patients();
+
 
 }
