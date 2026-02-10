@@ -1,7 +1,6 @@
 package com.cabinetMed.cabinetMedical.restControllers;
 
 import com.cabinetMed.cabinetMedical.DTOs.*;
-import com.cabinetMed.cabinetMedical.entities.Document;
 import com.cabinetMed.cabinetMedical.exception.GlobalResponse;
 import com.cabinetMed.cabinetMedical.services.DocumentService;
 import jakarta.validation.Valid;
@@ -24,7 +23,7 @@ public class DocumentController {
                 .body(new GlobalResponse<>(documentService.create(request)));
     }
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<GlobalResponse<DocumentResponseDto>> getById(@PathVariable Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
