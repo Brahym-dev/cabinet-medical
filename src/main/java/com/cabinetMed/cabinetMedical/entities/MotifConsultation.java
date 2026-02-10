@@ -16,9 +16,4 @@ public class MotifConsultation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String designation;
-
-
-    @OneToMany(mappedBy = "motifConsultation", fetch = FetchType.LAZY)
-    private List<Consultation> consultations;
-
 }
