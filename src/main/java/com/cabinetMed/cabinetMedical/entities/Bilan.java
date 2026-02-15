@@ -21,11 +21,9 @@ public class Bilan {
     private Date dateBilan;
     private String observation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
-
-    @OneToMany(mappedBy = "bilan",fetch = FetchType.LAZY)
-    private List<LigneBilan> ligneBilans;
 
 
 }

@@ -3,6 +3,8 @@ package com.cabinetMed.cabinetMedical.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Optional;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +20,8 @@ public class LigneBilan {
     @ManyToOne
     private Bilan bilan;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "analyse_id", nullable = false)
     private Analyse analyse;
 
 

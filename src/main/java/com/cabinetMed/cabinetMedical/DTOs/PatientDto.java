@@ -1,13 +1,10 @@
 package com.cabinetMed.cabinetMedical.DTOs;
 
 
-
-import com.cabinetMed.cabinetMedical.entities.*;
 import lombok.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Builder
 @Getter
@@ -40,7 +37,7 @@ public class PatientDto {
 
     private List<RendezVousDto> rendezVousDtos;
 
-    private List<BilanDto> bilanDtos;
+    private List<BilanCreateDto> bilanDtos;
 
     private TypeCouvertureMedicaleDto typeCouvertureMedicaleDto;
 
